@@ -1,0 +1,25 @@
+{
+  "name": "giveme-mymark",
+  "version": "1.0.0",
+  "description": "Simple telegram bot with features needed for automatization with marks in Logika school",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dmytrii Karpeka",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "tslint": "^6.1.3",
+    "typescript": "^4.9.5"
+  },
+  "engines": {
+    "node": "16.0",
+    "npm": "8.15"
+  },
+  "dependencies": {
+    "telegraf": "^4.11.2"
+  }
+}
