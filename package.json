@@ -20,6 +20,8 @@
     "npm": "8.15"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
+    "node-sheets": "^1.2.0",
     "telegraf": "^4.11.2"
   }
 }
