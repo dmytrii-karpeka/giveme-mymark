@@ -20,7 +20,7 @@ function getMarkByName(name: string, table: any) {
     const filteredRows = table.rows.filter((row: any) => {
         if (typeof row !== 'undefined') {
             if (typeof row[nameH] !== "undefined") {
-                return typeof row[nameH].stringValue !== "undefined" || row[nameH].stringValue !== 'Учень';
+                return typeof row[nameH].stringValue !== "undefined";
             } else {
                 return false;
             }
@@ -44,28 +44,23 @@ function getMarkByName(name: string, table: any) {
 const bot: Telegraf<Context<Update>> = new Telegraf(process.env.BOT_TOKEN as string);
 
 bot.start((ctx) => {
-    ctx.reply('Привіт ' + ctx.from.first_name + '!');
-    ctx.reply('Цей невеликий бот допоможе тобі у тому, щоб дізнатись про свою оцінку і не турбувати викладача.');
-    ctx.reply("Для того, щоб дізнатись оцінку введи своє Прізвище Ім'я\nНаприклад:");
-    ctx.reply("Дмитро Карпенко")
+    ctx.reply(`Привіт, ${ctx.from.first_name}!
+    Цей невеликий бот допоможе тобі у тому, щоб дізнатись про свою оцінку і не турбувати викладача.
+    Для того, щоб дізнатись оцінку введи своє Прізвище Ім'я\nНаприклад:\n\nДмитро Карпенко`);
 });
 
 bot.help((ctx) => {
     ctx.reply('Відправ /start щоб отримати привітання від бота🤖');
     ctx.reply("Відправ <Прізвище> <Ім'я> для отримання оцінки👾");
-    ctx.reply('Відправ /quit для зупинки бота');
+    ctx.reply('Відправ /quit для зупинки бота 🗑');
 });
-
 
 bot.on('text', async (ctx) => {
     await getTable().then(async (result: any) => {
         ctx.reply(
-            getMarkByName(ctx.message.text, result)
+            getMarkByName(ctx.message.text, result) + "\nДякую за використання цього бота! Зичу успіхів у навчанні ✨"
         );
     });
-    ctx.reply(
-        "Дякую за використання цього бота! Зичу успіхів у навчанні!"
-    );
 });
 
 bot.launch();
